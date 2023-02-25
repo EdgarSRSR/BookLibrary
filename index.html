@@ -5,13 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Library</title>
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
     <link rel="stylesheet" href="styles.css">
     
 </head>
 <body>
     <h3>Book Library</h3>
-    <div class="container"></div>
+    <div id="container"></div>
+    <div class="library"></div>
+    <button id="addBtn">Add Book</button>
+    
+    <!-- Add Book Modal Form -->
+    <div id="addBookForm" class="addBookForm">
+        <div class="addBookForm-content">
+            <span class="close">&times;</span>
+            <p>Add New Book</p>
+        </div>        
+    </div>
     
 </body>
 </html>
