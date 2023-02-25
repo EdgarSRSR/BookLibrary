@@ -10,8 +10,9 @@ function Book(title, author, pages, read) {
   this.info = function () {
     if (read === true) {
       return (`${title} by ${author}, ${pages} pages, already read.`);
+    } else{
+      return (`${title} by ${author}, ${pages} pages, not read yet.`);
     }
-    return (`${title} by ${author}, ${pages} pages, not read yet.`);
   };
 }
 
@@ -28,11 +29,13 @@ function showLibrary(){
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 395, true);
 const springSnow = new Book('Spring Snow', 'Yukio Mishima', 369, true);
 const bridesheasRevisited = new Book('Brideshead Revisited', 'Evelyn Waugh', 456, true);
+const WutheringHeights = new Book('Wuthering Heights', 'Emily Bronte', 1209);
 
 //console.log(theHobbit.info());
 addBookToLibrary(theHobbit);
 addBookToLibrary(springSnow);
 addBookToLibrary(bridesheasRevisited);
+addBookToLibrary(WutheringHeights);
 
 showLibrary();
 
@@ -41,11 +44,13 @@ showLibrary();
 //   document.querySelector('#container').innerHTML +=  `<span class="book">${book.info()}</span></br>`
 // });
 
+
+
 function createLibrary(){
   for(let i = 0; i < myLibrary.length; i++){
     const content = document.createElement('div');
     content.classList.add('box');
-    content.innerHTML =  `<span class="book">${myLibrary[i].info()}</span></br>`;
+    content.innerHTML =  `<span class="book">${myLibrary[i].info()} <input type="button" value="Remove" onclick="deleteBook(${i})" /></span></br>`;
     library.appendChild(content);
   }
 }
@@ -78,6 +83,35 @@ window.onclick = function(event){
   }
 }
 
+// Gathering Form Input Data
+function getData(form){
+  let formData = new FormData(form);
+  //addBookToLibrary(Object.fromEntries(formData));
+
+  // for (var pair of formData.entries()) {
+  //   console.log(pair[0] + ": " + pair[1]);
+  // }
+
+  //console.log(Object.fromEntries(formData));
+
+  let newBook = new Book(document.getElementById("title").value,document.getElementById("author").value, document.getElementById("pages").value, document.getElementById("read").checked);
+  addBookToLibrary(newBook);
+
+}
+
+document.getElementById("form").addEventListener("submit", function(e){
+  e.preventDefault();
+  getData(e.target);
+  library.innerHTML = '';
+  createLibrary();
+});
+
+function deleteBook(b){
+  myLibrary.splice(b,1);
+  library.innerHTML = '';
+  createLibrary();
+
+}
 
 
 
