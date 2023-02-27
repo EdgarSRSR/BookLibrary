@@ -8,10 +8,10 @@ function Book(title, author, pages, read) {
   this.read = read;
 
   this.info = function () {
-    if (read === true) {
-      return (`${title} by ${author}, ${pages} pages, already read.`);
+    if (this.read === true) {
+      return (`${this.title} by ${this.author}, ${this.pages} pages, ${this.read} already read.`);
     } else{
-      return (`${title} by ${author}, ${pages} pages, not read yet.`);
+      return (`${this.title} by ${this.author}, ${this.pages} pages, ${this.read} not read yet.`);
     }
   };
 }
@@ -50,7 +50,7 @@ function createLibrary(){
   for(let i = 0; i < myLibrary.length; i++){
     const content = document.createElement('div');
     content.classList.add('box');
-    content.innerHTML =  `<span class="book">${myLibrary[i].info()} <input type="button" value="Remove" onclick="deleteBook(${i})" /></span></br>`;
+    content.innerHTML =  `<span class="book">${myLibrary[i].info()} <input type="button" value="Remove" onclick="deleteBook(${i})" /><input type="button" value="readChange" onclick="readBook(${i})" /></span></br>`;
     library.appendChild(content);
   }
 }
@@ -111,6 +111,19 @@ function deleteBook(b){
   library.innerHTML = '';
   createLibrary();
 
+}
+
+function readBook(i){
+  console.log(myLibrary[i]["read"]);
+
+  if(myLibrary[i]["read"] === true){
+    myLibrary[i]["read"] = false;
+  }else{
+    myLibrary[i]["read"] = true;
+  }
+  library.innerHTML = '';
+  createLibrary();
+  console.log(myLibrary[i])
 }
 
 
