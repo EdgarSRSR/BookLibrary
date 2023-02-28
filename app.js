@@ -50,7 +50,7 @@ function createLibrary(){
   for(let i = 0; i < myLibrary.length; i++){
     const content = document.createElement('div');
     content.classList.add('box');
-    content.innerHTML =  `<span class="book">${myLibrary[i].info()} <input type="button" value="Remove" onclick="deleteBook(${i})" /><input type="button" value="readChange" onclick="readBook(${i})" /></span></br>`;
+    content.innerHTML =  `<span class="book">${myLibrary[i].info()} <input type="button" class="btn-delete" value="Remove" onclick="deleteBook(${i})" /><input type="button" class="btn-read" value="readChange" onclick="readBook(${i})" /></span></br>`;
     library.appendChild(content);
   }
 }
@@ -96,6 +96,8 @@ function getData(form){
 
   let newBook = new Book(document.getElementById("title").value,document.getElementById("author").value, document.getElementById("pages").value, document.getElementById("read").checked);
   addBookToLibrary(newBook);
+  document.getElementById("form").reset();
+  document.getElementById("addBookForm").style.display = "none";
 
 }
 

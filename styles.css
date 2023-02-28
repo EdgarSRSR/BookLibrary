@@ -1,5 +1,26 @@
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #000;
+    background: burlywood;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1em;
+}
+
 .box{
-    background: gray;
+    background:cadetblue;
+    color: white;
+    border: #000;
+    font-weight:  bold;
+    margin: 1em;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
 }
 
 /* Form */
@@ -39,6 +60,47 @@
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+.btn{
+    background-color: #4CAF50; /* Green */
+    font-weight:  bold;
+    color: white;
+    border: none;
+    padding: 0.5em 0.5em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0.5em;
+}
+
+.btn-delete{
+    background-color: orangered;
+    font-weight:  bold;
+    color: white;
+    border: none;
+    padding: 0.5em 0.5em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0.5em;
+}
+
+.btn-read{
+    background-color: #4CAF50;
+    font-weight:  bold;
+    color: white;
+    border: none;
+    padding: 0.5em 0.5em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0.5em;
+}
+
+.btn:hover, .btn-delete:hover, .btn-read:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px black;
 }
 
 
